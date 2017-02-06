@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+    <PreferenceCategory
+        android:key="pref_key_category_1"
+        android:title="preferences"> <!--@string/title_category_1" > -->
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Paramètres"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textView2" />
+
+        <CheckBoxPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PSW pour acceder à un profil"
+            android:id="@+id/checkBoxPSW"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </PreferenceCategory>
+</PreferenceScreen>

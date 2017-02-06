@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+    <PreferenceCategory
+        android:key="pref_key_category_1"
+        android:title="Paramètres"> <!--@string/title_category_1" > -->
+
+        <CheckBoxPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:title="PSW pour acceder à un profil"
+            android:id="@+id/checkBoxPSW"
+            android:key="psw"
+            android:checked="true"/>
+    </PreferenceCategory>
+</PreferenceScreen>
