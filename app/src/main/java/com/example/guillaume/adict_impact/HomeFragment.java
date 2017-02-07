@@ -226,7 +226,8 @@ public class HomeFragment extends Fragment {
     public void avanceAnimation() {
         if (j1_icon.getVisibility() == View.VISIBLE) {
             dest1 += 250*random();
-
+            frapper.setOnClickListener(null);
+            restart.setOnClickListener(null);
             final ViewPropertyAnimator animation1 = j1.animate().translationY(-dest1).setInterpolator(new LinearInterpolator()).setDuration(500);
 
             animation1.setListener(new Animator.AnimatorListener() {
@@ -235,7 +236,8 @@ public class HomeFragment extends Fragment {
                 public void onAnimationEnd(final android.animation.Animator animation) {
                     j1_icon.setVisibility(View.INVISIBLE);
                     j2_icon.setVisibility(View.VISIBLE);
-
+                    frapper.setOnClickListener(frapperListener);
+                    restart.setOnClickListener(restartListener);
                     winAnimation();
                 }
 
@@ -258,7 +260,8 @@ public class HomeFragment extends Fragment {
         }
         else {
             dest2 += 250*random();
-
+            frapper.setOnClickListener(null);
+            restart.setOnClickListener(null);
             final ViewPropertyAnimator animation2 = j2.animate().translationY(-dest2).setInterpolator(new LinearInterpolator()).setDuration(500);
 
             animation2.setListener(new Animator.AnimatorListener() {
@@ -268,7 +271,8 @@ public class HomeFragment extends Fragment {
                 public void onAnimationEnd(final android.animation.Animator animation) {
                     j1_icon.setVisibility(View.VISIBLE);
                     j2_icon.setVisibility(View.INVISIBLE);
-
+                    frapper.setOnClickListener(frapperListener);
+                    restart.setOnClickListener(restartListener);
                     winAnimation();
                 }
 
@@ -293,8 +297,10 @@ public class HomeFragment extends Fragment {
 
     public void winAnimation() {
         dist_remain1 = (j1.getTop() - (end.getTop() + end.getHeight())) - dest1;
-        if (dist_remain1 <= -5) {
+        if (dist_remain1 <= -8) {
             win1.setVisibility(View.VISIBLE);
+            frapper.setOnClickListener(null);
+            restart.setOnClickListener(null);
             final ViewPropertyAnimator animation1 = win1.animate().rotation(rot).setInterpolator(new LinearInterpolator()).setDuration(3000);
 
             animation1.setListener(new Animator.AnimatorListener() {
@@ -304,6 +310,7 @@ public class HomeFragment extends Fragment {
                 public void onAnimationEnd(final android.animation.Animator animation) {
                     win1.setVisibility(View.INVISIBLE);
                     restart();
+
                 }
 
                 @Override
@@ -325,8 +332,10 @@ public class HomeFragment extends Fragment {
         }
 
         dist_remain2 = (j2.getTop() - (end.getTop() + end.getHeight())) - dest2;
-        if (dist_remain2 <= -5) {
+        if (dist_remain2 <= -8) {
             win2.setVisibility(View.VISIBLE);
+            frapper.setOnClickListener(null);
+            restart.setOnClickListener(null);
             final ViewPropertyAnimator animation1 = win2.animate().rotation(rot).setInterpolator(new LinearInterpolator()).setDuration(3000);
 
             animation1.setListener(new Animator.AnimatorListener() {
@@ -376,6 +385,9 @@ public class HomeFragment extends Fragment {
 
         j1_icon.setVisibility(View.VISIBLE);
         j2_icon.setVisibility(View.INVISIBLE);
+
+        frapper.setOnClickListener(frapperListener);
+        restart.setOnClickListener(restartListener);
         /*if ((win1.getVisibility() == View.VISIBLE) || (win2.getVisibility() == View.VISIBLE)) {
             try {
                 Thread.sleep(3000);

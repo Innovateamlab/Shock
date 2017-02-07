@@ -39,8 +39,7 @@
         android:shadowRadius="5"
         android:layout_marginBottom="12dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/j1"
-        android:layout_alignStart="@+id/j1" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="128dp"
@@ -85,8 +84,8 @@
         android:id="@+id/j1"
         android:src="@drawable/joueur1"
         android:layout_marginBottom="23dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginStart="22dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
         android:layout_above="@+id/frapper_btn"
         android:layout_alignLeft="@+id/j1_icon"
         android:layout_alignStart="@+id/j1_icon" />
@@ -99,8 +98,8 @@
         android:layout_alignTop="@+id/j1"
         android:layout_toRightOf="@+id/frapper_btn"
         android:layout_toEndOf="@+id/frapper_btn"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"/>
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"/>
 
     <TextView
         android:layout_width="600dp"
