@@ -82,6 +82,15 @@
         android:layout_centerHorizontal="true" />
 
     <ImageView
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:id="@+id/inno"
+        android:src="@drawable/innovateam"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
         android:layout_width="64dp"
         android:layout_height="128dp"
         android:id="@+id/j1"

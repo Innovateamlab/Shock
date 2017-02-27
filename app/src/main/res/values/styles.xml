@@ -14,18 +14,15 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="DropDownNav.Adict_imact" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
-        <item name="android:background">@drawable/spinner_background_ab_adict_imact</item>
-        <item name="android:popupBackground">@drawable/menu_dropdown_panel_adict_imact</item>
-        <item name="android:dropDownSelector">@drawable/selectable_background_adict_imact</item>
+
+
+
+    <style name="ProgressBar.Vertical.j1" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_vertical_j1</item>
     </style>
 
-    <style name="ProgressBar.Adict_imact" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
-        <item name="android:progressDrawable">@drawable/progress_horizontal_adict_imact</item>
-    </style>
-
-    <style name="ProgressBar.Vertical" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
-        <item name="android:progressDrawable">@drawable/progress_vertical</item>
+    <style name="ProgressBar.Vertical.j2" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_vertical_j2</item>
     </style>
 
 
