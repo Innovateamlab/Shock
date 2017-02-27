@@ -1,331 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:id="@+id/frame"
+    >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_force"
-        android:orientation="vertical"
+    <Button
+        android:id="@+id/frapper_btn"
+
+        android:text="Frapper"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/choixboutonfrapper"
+        android:visibility="invisible"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_marginBottom="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <Button
+        android:id="@+id/restart_btn"
+
+        android:text="RESTART"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:background="@drawable/buttonrestart"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_marginBottom="12dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="128dp"
+        android:layout_height="64dp"
+        android:id="@+id/j1_icon"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:text="Joueur 1"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/j1_icon"
+        android:layout_marginLeft="58dp"
+        android:layout_marginStart="58dp"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/layout_vitesse"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="40dp">
+        android:layout_alignLeft="@+id/end"
+        android:layout_alignStart="@+id/end" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="8sp"
-                    android:text="0N"
-                    android:id="@+id/forceVal"
-                    android:textColor="@android:color/black"
-                    android:gravity="center_horizontal" />
-                <ProgressBar
-                    style="@style/ProgressBar.Vertical"
-                    android:layout_width="40dp"
-                    android:layout_height="300dp"
-                    android:id="@+id/force"
-                    android:max="100"
-                    android:progress="0" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="40dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="8sp"
-                    android:text="0N"
-                    android:id="@+id/force2Val"
-                    android:textColor="@android:color/black"
-                    android:gravity="center_horizontal" />
-                <ProgressBar
-                    style="@style/ProgressBar.Vertical"
-                    android:layout_width="40dp"
-                    android:layout_height="300dp"
-                    android:id="@+id/force2"
-                    android:max="100"
-                    android:progress="0"
-                     />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="40dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="8sp"
-                    android:text="0N"
-                    android:id="@+id/force3Val"
-                    android:textColor="@android:color/black"
-                    android:gravity="center_horizontal" />
-                <ProgressBar
-                    style="@style/ProgressBar.Vertical"
-                    android:layout_width="40dp"
-                    android:layout_height="300dp"
-                    android:id="@+id/force3"
-                    android:max="100"
-                    android:progress="0" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Force"
-            android:textColor="@android:color/black"
-            android:textSize="50sp"
-            android:id="@+id/Force" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/layout_vitesse"
-        android:layout_alignTop="@+id/layout_force"
-        android:layout_centerHorizontal="true">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="8sp"
-                    android:text="0m/s"
-                    android:id="@+id/vitVal"
-                    android:textColor="@android:color/black"
-                    android:gravity="center_horizontal" />
-                <ProgressBar
-                    style="@style/ProgressBar.Vertical"
-                    android:layout_width="40dp"
-                    android:layout_height="300dp"
-                    android:id="@+id/vit"
-                    android:max="100"
-                    android:progress="0" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="40dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="8sp"
-                    android:text="0m/s"
-                    android:id="@+id/vit2Val"
-                    android:textColor="@android:color/black"
-                    android:gravity="center_horizontal" />
-                <ProgressBar
-                    style="@style/ProgressBar.Vertical"
-                    android:layout_width="40dp"
-                    android:layout_height="300dp"
-                    android:id="@+id/vit2"
-                    android:max="100"
-                    android:progress="0" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="40dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="8sp"
-                    android:text="0m/s"
-                    android:id="@+id/vit3Val"
-                    android:textColor="@android:color/black"
-                    android:gravity="center_horizontal" />
-                <ProgressBar
-                    style="@style/ProgressBar.Vertical"
-                    android:layout_width="40dp"
-                    android:layout_height="300dp"
-                    android:id="@+id/vit3"
-                    android:max="100"
-                    android:progress="0" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Vitesse"
-            android:textColor="@android:color/black"
-            android:textSize="50sp"
-            android:id="@+id/Vitesse" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_puissance"
-        android:orientation="vertical"
-        android:layout_alignTop="@+id/layout_vitesse"
-        android:layout_toRightOf="@id/layout_vitesse"
-        android:layout_marginLeft="50dp">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="8sp"
-                    android:text="0W"
-                    android:id="@+id/puissVal"
-                    android:textColor="@android:color/black"
-                    android:gravity="center_horizontal" />
-                <ProgressBar
-                    style="@style/ProgressBar.Vertical"
-                    android:layout_width="40dp"
-                    android:layout_height="300dp"
-                    android:id="@+id/puiss"
-                    android:max="100"
-                    android:progress="0" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="40dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="8sp"
-                    android:text="0W"
-                    android:id="@+id/puiss2Val"
-                    android:textColor="@android:color/black"
-                    android:gravity="center_horizontal" />
-                <ProgressBar
-                    style="@style/ProgressBar.Vertical"
-                    android:layout_width="40dp"
-                    android:layout_height="300dp"
-                    android:id="@+id/puiss2"
-                    android:max="100"
-                    android:progress="0" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="40dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="8sp"
-                    android:text="0W"
-                    android:id="@+id/puiss3Val"
-                    android:textColor="@android:color/black"
-                    android:gravity="center_horizontal" />
-                <ProgressBar
-                    style="@style/ProgressBar.Vertical"
-                    android:layout_width="40dp"
-                    android:layout_height="300dp"
-                    android:id="@+id/puiss3"
-                    android:max="100"
-                    android:progress="0" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Puissance"
-            android:textColor="@android:color/black"
-            android:textSize="50sp"
-            android:id="@+id/Puissance" />
-    </LinearLayout>
+    <TextView
+        android:layout_width="128dp"
+        android:layout_height="64dp"
+        android:id="@+id/j2_icon"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:text="Joueur 2"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/j2_icon"
+        android:layout_marginLeft="90dp"
+        android:layout_marginStart="90dp"
+        android:layout_toRightOf="@+id/j1_icon"
+        android:layout_toEndOf="@+id/j1_icon" />
 
     <ImageView
-        android:layout_width="600dp"
-        android:layout_height="600dp"
-        android:id="@+id/cible"
-        android:layout_gravity="center"
-        android:src="@drawable/cible"
-        android:layout_above="@+id/vert"
+        android:layout_width="455dp"
+        android:layout_height="100dp"
+        android:id="@+id/end"
+        android:src="@drawable/end"
+        android:layout_below="@+id/j1_icon"
         android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/impact"
-        android:src="@drawable/impact"
-        android:layout_alignTop="@+id/cible"
-        android:layout_alignLeft="@+id/cible"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="0dp" />
+        android:layout_width="64dp"
+        android:layout_height="128dp"
+        android:id="@+id/j1"
+        android:src="@drawable/joueur1"
+        android:layout_marginBottom="23dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_above="@+id/frapper_btn"
+        android:layout_alignLeft="@+id/j1_icon"
+        android:layout_alignStart="@+id/j1_icon" />
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/impact2"
-        android:src="@drawable/impact"
-        android:layout_alignTop="@+id/cible"
-        android:layout_alignLeft="@+id/cible"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="0dp" />
+        android:layout_width="64dp"
+        android:layout_height="128dp"
+        android:id="@+id/j2"
+        android:src="@drawable/joueur2"
+        android:layout_alignTop="@+id/j1"
+        android:layout_toRightOf="@+id/frapper_btn"
+        android:layout_toEndOf="@+id/frapper_btn"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"/>
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/impact3"
-        android:src="@drawable/impact"
-        android:layout_alignTop="@+id/cible"
-        android:layout_alignLeft="@+id/cible"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="0dp" />
+    <TextView
+        android:layout_width="600dp"
+        android:layout_height="150dp"
+        android:id="@+id/win1"
+        android:gravity="center"
+        android:textSize="60sp"
+        android:text="Joueur 1 a gagné!!"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/j1_icon"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
-    <ImageButton
+    <TextView
+        android:layout_width="600dp"
+        android:layout_height="150dp"
+        android:id="@+id/win2"
+        android:gravity="center"
+        android:textSize="60sp"
+        android:text="Joueur 2 a gagné!!"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/j2_icon"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:id="@+id/force1_txt"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:text="0"
+        android:gravity="center"
+        android:background="@drawable/j1_icon"
+        android:layout_alignBottom="@+id/restart_btn"
+        android:layout_toLeftOf="@+id/win1"
+        android:layout_toStartOf="@+id/win1" />
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:id="@+id/force2_txt"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:text="0"
+        android:gravity="center"
+        android:background="@drawable/j2_icon"
+        android:layout_alignBottom="@+id/restart_btn"
+        android:layout_toRightOf="@+id/win1"
+        android:layout_toEndOf="@+id/win1" />
+
+    <ProgressBar
+        style="@style/ProgressBar.Vertical.j1"
+        android:layout_width="50dp"
+        android:layout_height="400dp"
+        android:id="@+id/force1"
+        android:max="100"
+        android:progress="0"
+        android:layout_above="@+id/force1_txt"
+        android:layout_alignLeft="@+id/force1_txt"
+        android:layout_alignStart="@+id/force1_txt"
+        android:layout_marginBottom="10dp"/>
+
+    <ProgressBar
+        style="@style/ProgressBar.Vertical.j2"
+        android:layout_width="50dp"
+        android:layout_height="400dp"
+        android:id="@+id/force2"
+        android:max="100"
+        android:progress="0"
+        android:layout_above="@+id/force2_txt"
+        android:layout_toRightOf="@+id/win1"
+        android:layout_toEndOf="@+id/win1"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/rouge"
-        android:layout_gravity="right"
-        android:src="@drawable/rouge"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/cible"/>
+        android:visibility="invisible"
+        android:textSize="60sp"
+        android:layout_marginTop="140dp"
+        android:id="@+id/affichageresultat"
+        android:layout_below="@+id/end"
+        android:layout_alignLeft="@+id/j1"
+        android:layout_alignStart="@+id/j1" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/vert"
-        android:layout_gravity="right"
-        android:src="@drawable/vert"
-        android:layout_toRightOf="@id/cible"
-        android:layout_above="@+id/rouge"/>
+    <Button
+        android:id="@+id/blue"
+
+        android:text="BLUE"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="#2125e4"
+        android:visibility="invisible"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_marginLeft="50dp"
+        android:layout_alignBottom="@+id/green"
+        android:layout_toRightOf="@+id/green" />
+
+    <Button
+        android:id="@+id/green"
+
+        android:text="GREEN"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="#55ef13"
+        android:visibility="invisible"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_alignTop="@+id/force1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp" />
+
+    <Button
+        android:id="@+id/red"
+
+        android:text="RED"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="#d91111"
+        android:visibility="invisible"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_marginRight="50dp"
+        android:layout_alignBottom="@+id/green"
+        android:layout_toLeftOf="@+id/green" />
+
+
+
 
 </RelativeLayout>
