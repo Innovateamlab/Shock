@@ -1,4 +1,4 @@
-package com.example.guillaume.adict_impact;
+package com.example.guillaume.adict_impact.vues.jeu;
 
 /**
  * Created by innovalab2 on 09/02/2017.
@@ -11,6 +11,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.Log;
 import android.widget.ImageView;
+
+import com.example.guillaume.adict_impact.R;
 
 public class Particle {
 
@@ -44,7 +46,7 @@ public class Particle {
         J1 = j1;
         mState = ALIVE;
         if (mBase==null) {
-            mBase = BitmapFactory.decodeResource(c.getResources(),R.drawable.fire_fx);
+            mBase = BitmapFactory.decodeResource(c.getResources(), R.drawable.fire_fx);
         }
         int newWidth = (int) (mBase.getWidth()*randomDouble(1.01, maxScale));
         int newHeight = (int) (mBase.getHeight()*randomDouble(1.01, maxScale));

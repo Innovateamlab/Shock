@@ -1,4 +1,4 @@
-package com.example.guillaume.adict_impact;
+package com.example.guillaume.adict_impact.vues.jeu;
 
 /**
  * Created by innovalab2 on 09/02/2017.
@@ -6,7 +6,6 @@ package com.example.guillaume.adict_impact;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.util.Log;
 import android.widget.ImageView;
 
 public class Explosion {

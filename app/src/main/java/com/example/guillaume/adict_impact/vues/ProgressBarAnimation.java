@@ -1,4 +1,4 @@
-package com.example.guillaume.adict_impact;
+package com.example.guillaume.adict_impact.vues;
 
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
