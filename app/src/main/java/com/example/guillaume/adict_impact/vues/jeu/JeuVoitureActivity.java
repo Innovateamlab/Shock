@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.guillaume.adict_impact.MainActivity;
 import com.example.guillaume.adict_impact.R;
 import com.example.guillaume.adict_impact.communication.FctBluetooth;
+import com.example.guillaume.adict_impact.modele.Labels;
 import com.example.guillaume.adict_impact.modele.ObjetFrappe;
 import com.example.guillaume.adict_impact.modele.ObjetNotification;
 import com.example.guillaume.adict_impact.modele.SacDeFrappe;
@@ -82,9 +83,9 @@ public class JeuVoitureActivity extends AppCompatActivity implements Observer {
     TextView progressTxt_inactive;
     TextView win;
 
-    String msg_received = "";
 
-   private TextView affichageresultat;
+
+    private TextView affichageresultat;
 
     private final static int FRAME_RATE = 30;
     private final static int LIFETIME = 500;
@@ -93,6 +94,7 @@ public class JeuVoitureActivity extends AppCompatActivity implements Observer {
     private Explosion mExplosion;
 
     private SacDeFrappe sacDeFrappe;
+    private ObjetFrappe objetFrappe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,11 +193,9 @@ public class JeuVoitureActivity extends AppCompatActivity implements Observer {
             dest = dest2;
         }
 
-        dest_tmp = (Integer.parseInt(msg_received));
-        dest += 250*(dest_tmp/max);
-        if (dest_tmp == -1) {
-        }
-        else {
+        dest_tmp = objetFrappe.getPuissanceMax();
+        if (dest_tmp != -1) {
+            dest += 250*(dest_tmp/max);
             restart.setOnClickListener(null);
             final ViewPropertyAnimator animation1 = j_active.animate().translationY(-dest).setInterpolator(new LinearInterpolator()).setDuration(1500);
 
@@ -232,8 +232,6 @@ public class JeuVoitureActivity extends AppCompatActivity implements Observer {
                     restart.setOnClickListener(restartListener);
 
                     winAnimation();
-
-                    msg_received = "";
                 }
 
                 @Override
@@ -251,7 +249,6 @@ public class JeuVoitureActivity extends AppCompatActivity implements Observer {
 
                 }
             });
-
         }
     }
 
@@ -367,7 +364,13 @@ public class JeuVoitureActivity extends AppCompatActivity implements Observer {
     public void update(Observable observable, Object data)
     {
         ObjetNotification objNotification = (ObjetNotification) data;
-        msg_received = objNotification.getString();
+        switch(objNotification.label)
+        {
+            case OBJET_FRAPPE:
+                objetFrappe = objNotification.getObjetFrappe();
+                break;
+        }
+
         avanceAnimation(mFX);
     }
 }

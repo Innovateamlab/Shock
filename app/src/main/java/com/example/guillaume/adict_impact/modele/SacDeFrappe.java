@@ -22,10 +22,12 @@ import static android.widget.Toast.LENGTH_SHORT;
 public class SacDeFrappe extends Observable
 {
     private String msg_received, tmp_received;
-    BluetoothAdapter blueAdapter;
-    FctBluetooth bt;
+    private BluetoothAdapter blueAdapter;
+    private FctBluetooth bt;
+    private ObjetFrappe objetFrappe;
 
-    final Handler handler = new Handler() {
+    final Handler handler = new Handler()
+    {
         public void handleMessage(Message msg) {
             String data = msg.getData().getString("receivedData"); // On reçoit les "data" données envoyées par bluetooth
             String[] dataTemp = data.split("\n");
@@ -39,9 +41,15 @@ public class SacDeFrappe extends Observable
                 tmp_received = "";
 
                 Log.i("SacDeFrappe",msg_received);
+                objetFrappe.ajouterEchantillonParser(msg_received);
 
                 setChanged();
-                notifyObservers(new ObjetNotification("",msg_received));
+                notifyObservers(new ObjetNotification(Labels.OBJET_FRAPPE,objetFrappe));
+
+                //TODO Ajouter la reinitilisation d'une frappe après reception de 'END' ou 'NEW' ? (MAJ de Arduino)
+
+                objetFrappe.calculerInfos();
+                objetFrappe.reset();
             }
         }
     };
@@ -58,6 +66,8 @@ public class SacDeFrappe extends Observable
     };
 
     public SacDeFrappe(Activity parent) {
+
+        objetFrappe = new ObjetFrappe();
         tmp_received = "";
         blueAdapter = BluetoothAdapter.getDefaultAdapter();
         // Demande d'activation de la fonction Bluetooth (si inactive)

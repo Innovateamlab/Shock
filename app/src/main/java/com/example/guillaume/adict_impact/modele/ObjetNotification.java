@@ -4,12 +4,14 @@ package com.example.guillaume.adict_impact.modele;
  * Created by ludovic on 28/02/17.
  */
 
+
+
 public class ObjetNotification
 {
-    public String label;
+    public Labels label;
     public Object object;
 
-    public ObjetNotification(String label, Object obj)
+    public ObjetNotification(Labels label, Object obj)
     {
         this.label = label;
         this.object = obj;
