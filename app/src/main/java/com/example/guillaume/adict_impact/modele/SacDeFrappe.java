@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Parcelable;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -40,10 +41,9 @@ public class SacDeFrappe extends Observable
                 Log.i("SacDeFrappe",msg_received);
 
                 setChanged();
-                notifyObservers();
+                notifyObservers(new ObjetNotification("",msg_received));
             }
         }
-
     };
 
     final Handler handlerStatus = new Handler() {

@@ -22,14 +22,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.guillaume.adict_impact.MainActivity;
 import com.example.guillaume.adict_impact.R;
 import com.example.guillaume.adict_impact.communication.FctBluetooth;
+import com.example.guillaume.adict_impact.modele.ObjetFrappe;
+import com.example.guillaume.adict_impact.modele.ObjetNotification;
+import com.example.guillaume.adict_impact.modele.SacDeFrappe;
 import com.example.guillaume.adict_impact.vues.ProgressBarAnimation;
+
+import java.util.Observable;
+import java.util.Observer;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
-public class JeuVoitureActivity extends AppCompatActivity {
-
+public class JeuVoitureActivity extends AppCompatActivity implements Observer {
 
     ImageView j1;
     ImageView j2;
@@ -78,11 +84,7 @@ public class JeuVoitureActivity extends AppCompatActivity {
 
     String msg_received = "";
 
-    int i;
-
-    private FctBluetooth bt = null; // On crée l'objet de connexion Bluetooth
-
-    private TextView affichageresultat;
+   private TextView affichageresultat;
 
     private final static int FRAME_RATE = 30;
     private final static int LIFETIME = 500;
@@ -90,39 +92,15 @@ public class JeuVoitureActivity extends AppCompatActivity {
     private View mFX;
     private Explosion mExplosion;
 
-    double rnd;
-
-    // On crée un handler pour gérer du travail parallèle.
-    final Handler handler = new Handler() {
-        public void handleMessage(Message msg) {
-        String data = msg.getData().getString("receivedData"); // On reçoit les "data" données envoyées par bluetooth
-        String[] dataTemp = data.split("\n");
-
-
-        affichageresultat.append(dataTemp[0]+" ");
-        msg_received += dataTemp[0];
-        avanceAnimation(mFX);
-        }
-
-    };
-
-    //
-    final Handler handlerStatus = new Handler() {
-        public void handleMessage(Message msg) {
-        int co = msg.arg1;
-        if(co == 1) {
-            //affichageresultat.append("Connected\n");
-        } else if(co == 2) {
-            //affichageresultat.append("Disconnected\n");
-        }
-        }
-    };
-
+    private SacDeFrappe sacDeFrappe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jeu_voiture);
+
+        sacDeFrappe = MainActivity.sacDeFrappe;
+        sacDeFrappe.addObserver(this);
 
         // voitures
         j1 = (ImageView) findViewById(R.id.j1);
@@ -155,72 +133,8 @@ public class JeuVoitureActivity extends AppCompatActivity {
 
         affichageresultat = (TextView) findViewById(R.id.affichageresultat);
 
+        restart();
 
-        //initialisation Bluetooth
-        BluetoothAdapter blueAdapter = BluetoothAdapter.getDefaultAdapter();
-
-        // Demande d'activation de la fonction Bluetooth (si inactive)
-        if (!blueAdapter.isEnabled()) { // i.e. "si le bluetooth est inactif..."
-            Intent enableBlueTooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBlueTooth, RESULT_OK);
-        } else { // i.e. "si le bluetooth est actif..."
-            Toast.makeText(this, "Bluetooth actif", LENGTH_SHORT).show();
-        }
-
-        // Création de l'objet fonction Bluetooth
-        bt = new FctBluetooth(handlerStatus, handler);
-
-        Log.i("FctBluetooth","dodo 10s");
-
-        bt.connect();
-
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        Log.i("FctBluetooth","on s'est connecté");
-
-        restart.setOnClickListener(restartListener);
-
-        bt.sendData("A");
-        affichageresultat.append("A");
-        try {
-            Thread.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        bt.sendData("1");
-        affichageresultat.append("1");
-        try {
-            Thread.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        bt.sendData("R");
-        affichageresultat.append("R");
-        try {
-            Thread.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        bt.sendData("1");
-        affichageresultat.append("1");
-        try {
-            Thread.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        bt.sendData("G");
-        affichageresultat.append("G");
-        try {
-            Thread.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        bt.sendData("1");
-        affichageresultat.append("1");
 
         // effet de particules
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.frame);
@@ -253,101 +167,96 @@ public class JeuVoitureActivity extends AppCompatActivity {
     };
 
     // animation sur j1 ou j2
-    public void avanceAnimation(View v) {
-        if (msg_received.contains("\r")) {
-            String[] dataTemp = msg_received.split("\r");
-            msg_received = dataTemp[0];
+    public void avanceAnimation(View v)
+    {
+        if (j1_icon.getVisibility() == View.VISIBLE) {
+            j_active = j1;
+            j_icon_active = j1_icon;
+            j_icon_inactive = j2_icon;
+            progressBar_active = progressBar1;
+            progressBar_inactive = progressBar2;
+            progressTxt_active = progressTxt1;
+            progressTxt_inactive = progressTxt2;
+            send_data = "B";
+            dest = dest1;
+        } else {
+            j_active = j2;
+            j_icon_active = j2_icon;
+            j_icon_inactive = j1_icon;
+            progressBar_active = progressBar2;
+            progressBar_inactive = progressBar1;
+            progressTxt_active = progressTxt2;
+            progressTxt_inactive = progressTxt1;
+            send_data = "G";
+            dest = dest2;
+        }
 
-            if (j1_icon.getVisibility() == View.VISIBLE) {
-                j_active = j1;
-                j_icon_active = j1_icon;
-                j_icon_inactive = j2_icon;
-                progressBar_active = progressBar1;
-                progressBar_inactive = progressBar2;
-                progressTxt_active = progressTxt1;
-                progressTxt_inactive = progressTxt2;
-                send_data = "B";
-                dest = dest1;
-            } else {
-                j_active = j2;
-                j_icon_active = j2_icon;
-                j_icon_inactive = j1_icon;
-                progressBar_active = progressBar2;
-                progressBar_inactive = progressBar1;
-                progressTxt_active = progressTxt2;
-                progressTxt_inactive = progressTxt1;
-                send_data = "G";
-                dest = dest2;
-            }
+        dest_tmp = (Integer.parseInt(msg_received));
+        dest += 250*(dest_tmp/max);
+        if (dest_tmp == -1) {
+        }
+        else {
+            restart.setOnClickListener(null);
+            final ViewPropertyAnimator animation1 = j_active.animate().translationY(-dest).setInterpolator(new LinearInterpolator()).setDuration(1500);
 
-            dest_tmp = (Integer.parseInt(msg_received));
-            dest += 250*(dest_tmp/max);
-            if (dest_tmp == -1) {
-            }
-            else {
-                restart.setOnClickListener(null);
-                final ViewPropertyAnimator animation1 = j_active.animate().translationY(-dest).setInterpolator(new LinearInterpolator()).setDuration(1500);
+            progressTxt_active.setText("0");
+            progressBar_active.setProgress(0);
+            ProgressBarAnimation anim = new ProgressBarAnimation(progressBar_active, progressTxt_active, 0, 100*(dest_tmp/max));
+            anim.setDuration(1500);
+            progressBar_active.startAnimation(anim);
 
-                progressTxt_active.setText("0");
-                progressBar_active.setProgress(0);
-                ProgressBarAnimation anim = new ProgressBarAnimation(progressBar_active, progressTxt_active, 0, 100*(dest_tmp/max));
-                anim.setDuration(1500);
-                progressBar_active.startAnimation(anim);
-
-                int[] loc = new int[2];
-                j_active.getLocationOnScreen(loc);
-                int offsetX = loc[0];
-                int offsetY = (int) (loc[1] + (j_active.getHeight() * 0.5) + 40);
-                mExplosion = new Explosion((int) (dest_tmp/4), offsetX, offsetY, v.getContext(), j_active);
-                mHandler.removeCallbacks(mRunner);
-                mHandler.post(mRunner);
-                v.animate().setDuration(LIFETIME).start();
+            int[] loc = new int[2];
+            j_active.getLocationOnScreen(loc);
+            int offsetX = loc[0];
+            int offsetY = (int) (loc[1] + (j_active.getHeight() * 0.5) + 40);
+            mExplosion = new Explosion((int) (dest_tmp/4), offsetX, offsetY, v.getContext(), j_active);
+            mHandler.removeCallbacks(mRunner);
+            mHandler.post(mRunner);
+            v.animate().setDuration(LIFETIME).start();
 
 
-                animation1.setListener(new Animator.AnimatorListener() {
+            animation1.setListener(new Animator.AnimatorListener() {
 
-                    @Override
-                    public void onAnimationEnd(final Animator animation) {
-                        if (j1_icon.getVisibility() == View.VISIBLE) {
-                            dest1 = dest;
-                        } else {
-                            dest2 = dest;
-                        }
-
-                        j_icon_active.setVisibility(View.INVISIBLE);
-                        j_icon_inactive.setVisibility(View.VISIBLE);
-
-
-                        restart.setOnClickListener(restartListener);
-
-                        winAnimation();
-
-                        msg_received = "";
+                @Override
+                public void onAnimationEnd(final Animator animation) {
+                    if (j1_icon.getVisibility() == View.VISIBLE) {
+                        dest1 = dest;
+                    } else {
+                        dest2 = dest;
                     }
 
-                    @Override
-                    public void onAnimationStart(Animator animation) {
+                    j_icon_active.setVisibility(View.INVISIBLE);
+                    j_icon_inactive.setVisibility(View.VISIBLE);
 
-                    }
 
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
+                    restart.setOnClickListener(restartListener);
 
-                    }
+                    winAnimation();
 
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
+                    msg_received = "";
+                }
 
-                    }
-                });
+                @Override
+                public void onAnimationStart(Animator animation) {
 
-            }
+                }
 
+                @Override
+                public void onAnimationCancel(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+
+                }
+            });
 
         }
     }
 
-    public void winAnimation() {
+    public void winAnimation()
+    {
         dist_remain1 = (j1.getTop() - (end.getTop() + end.getHeight())) - dest1;
         dist_remain2 = (j2.getTop() - (end.getTop() + end.getHeight())) - dest2;
         if (dist_remain1 <= -8 || dist_remain2 <= -8) {
@@ -390,15 +299,7 @@ public class JeuVoitureActivity extends AppCompatActivity {
             });
         }
         else {
-            bt.sendData(send_data);
-            affichageresultat.append(send_data);
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            bt.sendData("1");
-            affichageresultat.append("1 ");
+            sacDeFrappe.sendData(send_data);
         }
 
 
@@ -432,44 +333,8 @@ public class JeuVoitureActivity extends AppCompatActivity {
 
         restart.setOnClickListener(restartListener);
 
-        bt.sendData("A");
-        affichageresultat.append("A");
-        try {
-            Thread.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        bt.sendData("1");
-        affichageresultat.append("1 ");
-        try {
-            Thread.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        bt.sendData("R");
-        affichageresultat.append("R");
-        try {
-            Thread.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        bt.sendData("1");
-        affichageresultat.append("1");
-        try {
-            Thread.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        bt.sendData("G");
-        affichageresultat.append("G");
-        try {
-            Thread.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        bt.sendData("1");
-        affichageresultat.append("1");
-
+        sacDeFrappe.sendData("A");
+        sacDeFrappe.sendData("G");
     }
 
     @Override
@@ -496,5 +361,13 @@ public class JeuVoitureActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void update(Observable observable, Object data)
+    {
+        ObjetNotification objNotification = (ObjetNotification) data;
+        msg_received = objNotification.getString();
+        avanceAnimation(mFX);
     }
 }
