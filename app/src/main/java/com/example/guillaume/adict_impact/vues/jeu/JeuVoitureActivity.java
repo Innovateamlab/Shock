@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidplot.xy.XYSeries;
 import com.example.guillaume.adict_impact.MainActivity;
 import com.example.guillaume.adict_impact.R;
 import com.example.guillaume.adict_impact.communication.FctBluetooth;
@@ -345,6 +346,7 @@ public class JeuVoitureActivity extends AppCompatActivity implements Observer {
 
     @Override
     public void onBackPressed() {
+        sacDeFrappe.deleteObserver(this);
     }
 
     @Override

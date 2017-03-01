@@ -49,7 +49,7 @@ public class SacDeFrappe extends Observable
                 //TODO Ajouter la reinitilisation d'une frappe après reception de 'END' ou 'NEW' ? (MAJ de Arduino)
 
                 objetFrappe.calculerInfos();
-                objetFrappe.reset();
+                //objetFrappe.reset();
             }
         }
     };
