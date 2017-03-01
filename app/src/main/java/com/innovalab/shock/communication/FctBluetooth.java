@@ -1,4 +1,4 @@
-package com.example.guillaume.adict_impact.communication;
+package com.innovalab.shock.communication;
 
 /**
  * Created by innovalab2 on 07/02/2017.

@@ -1,19 +1,17 @@
-package com.example.guillaume.adict_impact;
+package com.innovalab.shock;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 
-import com.example.guillaume.adict_impact.R;
-import com.example.guillaume.adict_impact.modele.ObjetFrappe;
-import com.example.guillaume.adict_impact.modele.SacDeFrappe;
-import com.example.guillaume.adict_impact.modele.Vector3;
-import com.example.guillaume.adict_impact.vues.GraphsActivity;
-import com.example.guillaume.adict_impact.vues.jeu.JeuVoitureActivity;
-import com.example.guillaume.adict_impact.vues.statsDebug.DebugActivity;
+import com.innovalab.shock.R;
+import com.innovalab.shock.modele.ObjetFrappe;
+import com.innovalab.shock.modele.SacDeFrappe;
+import com.innovalab.shock.modele.Vector3;
+import com.innovalab.shock.vues.GraphsActivity;
+import com.innovalab.shock.vues.jeu.JeuVoitureActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.onglet_home);
 
-        sacDeFrappe = new SacDeFrappe(this);
+        //sacDeFrappe = new SacDeFrappe(this);
 
         Button button = (Button) findViewById(R.id.jeuVoiture);
         button.setOnClickListener(this);

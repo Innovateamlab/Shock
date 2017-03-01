@@ -1,15 +1,14 @@
-package com.example.guillaume.adict_impact.modele;
+package com.innovalab.shock.modele;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Parcelable;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.guillaume.adict_impact.communication.FctBluetooth;
+import com.innovalab.shock.communication.FctBluetooth;
 
 import java.util.Observable;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.guillaume.adict_impact">
+    package="com.innovalab.shock">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.innovalab.shock.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -20,17 +20,17 @@
         </activity>
 
         <activity
-            android:name=".vues.jeu.JeuVoitureActivity"
+            android:name="com.innovalab.shock.vues.jeu.JeuVoitureActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".vues.statsDebug.DebugActivity"
+            android:name="com.innovalab.shock.vues.statsDebug.DebugActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".vues.GraphsActivity"
+            android:name="com.innovalab.shock.vues.GraphsActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>

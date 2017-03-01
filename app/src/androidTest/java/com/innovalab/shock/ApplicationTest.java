@@ -1,4 +1,4 @@
-package com.example.guillaume.adict_impact;
+package com.innovalab.shock;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

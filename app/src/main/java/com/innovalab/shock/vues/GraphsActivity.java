@@ -1,4 +1,4 @@
-package com.example.guillaume.adict_impact.vues;
+package com.innovalab.shock.vues;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import com.androidplot.xy.SimpleXYSeries;
 import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
 import com.androidplot.xy.XYSeriesFormatter;
-import com.example.guillaume.adict_impact.R;
-import com.example.guillaume.adict_impact.modele.ObjetFrappe;
+import com.innovalab.shock.R;
+import com.innovalab.shock.modele.ObjetFrappe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +53,7 @@ public class GraphsActivity extends Activity
             XYSeries courbeF3= new SimpleXYSeries(objetFrappe.getTemps(),objetFrappe.getforceFrappeNumC3(), "C3");
             listeCourbeForce.add(courbeF3);
 
+            listeGraph.add(listeCourbeForce);
             listeGraph.add(listeCourbeForce);
         }
 

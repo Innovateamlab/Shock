@@ -1,4 +1,4 @@
-package com.example.guillaume.adict_impact.vues.jeu;
+package com.innovalab.shock.vues.jeu;
 
 /**
  * Created by innovalab2 on 09/02/2017.

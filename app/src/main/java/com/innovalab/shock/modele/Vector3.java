@@ -1,4 +1,4 @@
-package com.example.guillaume.adict_impact.modele;
+package com.innovalab.shock.modele;
 
 import java.io.Serializable;
 

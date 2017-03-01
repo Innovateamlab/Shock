@@ -1,14 +1,14 @@
-package com.example.guillaume.adict_impact.vues.statsDebug;
+package com.innovalab.shock.vues.statsDebug;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.guillaume.adict_impact.MainActivity;
-import com.example.guillaume.adict_impact.R;
-import com.example.guillaume.adict_impact.modele.ObjetNotification;
-import com.example.guillaume.adict_impact.modele.SacDeFrappe;
-import com.example.guillaume.adict_impact.vues.GraphsActivity;
+import com.innovalab.shock.MainActivity;
+import com.innovalab.shock.R;
+import com.innovalab.shock.modele.ObjetNotification;
+import com.innovalab.shock.modele.SacDeFrappe;
+import com.innovalab.shock.vues.GraphsActivity;
 
 import java.util.Observable;
 import java.util.Observer;

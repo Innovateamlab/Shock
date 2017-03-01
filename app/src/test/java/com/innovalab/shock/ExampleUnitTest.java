@@ -1,4 +1,4 @@
-package com.example.guillaume.adict_impact;
+package com.innovalab.shock;
 
 import org.junit.Test;
 

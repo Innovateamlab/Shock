@@ -1,4 +1,4 @@
-package com.example.guillaume.adict_impact.vues.jeu;
+package com.innovalab.shock.vues.jeu;
 
 /**
  * Created by innovalab2 on 09/02/2017.
@@ -12,7 +12,7 @@ import android.graphics.Paint;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.example.guillaume.adict_impact.R;
+import com.innovalab.shock.R;
 
 public class Particle {
 

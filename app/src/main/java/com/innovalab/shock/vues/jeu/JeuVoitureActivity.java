@@ -1,14 +1,10 @@
-package com.example.guillaume.adict_impact.vues.jeu;
+package com.innovalab.shock.vues.jeu;
 
 import android.animation.Animator;
-import android.bluetooth.BluetoothAdapter;
-import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,22 +16,16 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.androidplot.xy.XYSeries;
-import com.example.guillaume.adict_impact.MainActivity;
-import com.example.guillaume.adict_impact.R;
-import com.example.guillaume.adict_impact.communication.FctBluetooth;
-import com.example.guillaume.adict_impact.modele.Labels;
-import com.example.guillaume.adict_impact.modele.ObjetFrappe;
-import com.example.guillaume.adict_impact.modele.ObjetNotification;
-import com.example.guillaume.adict_impact.modele.SacDeFrappe;
-import com.example.guillaume.adict_impact.vues.ProgressBarAnimation;
+import com.innovalab.shock.MainActivity;
+import com.innovalab.shock.R;
+import com.innovalab.shock.modele.ObjetFrappe;
+import com.innovalab.shock.modele.ObjetNotification;
+import com.innovalab.shock.modele.SacDeFrappe;
+import com.innovalab.shock.vues.ProgressBarAnimation;
 
 import java.util.Observable;
 import java.util.Observer;
-
-import static android.widget.Toast.LENGTH_SHORT;
 
 public class JeuVoitureActivity extends AppCompatActivity implements Observer {
 
