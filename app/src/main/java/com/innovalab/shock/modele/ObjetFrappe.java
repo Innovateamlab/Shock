@@ -38,6 +38,9 @@ public class ObjetFrappe implements Serializable{
         int nbEchantillons = 20;
 
         float max1 = m_puissanceMax, max2 = 0.9f*m_puissanceMax, max3 = 1.2f*m_puissanceMax;
+        Log.i("Debug","Punch : "+max1+" | Max : "+max3);
+
+
         reset();
 
         for(int i=0;i<nbEchantillons;i++)
@@ -54,7 +57,6 @@ public class ObjetFrappe implements Serializable{
 
             }
 
-            Log.i("Debug",i+" "+diff+" "+vect3);
 
             m_capteurs.add(vect3);
             m_puissances.add((vect3.x+vect3.y+vect3.z)/3);

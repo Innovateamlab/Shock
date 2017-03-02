@@ -13,10 +13,14 @@ import com.innovalab.shock.modele.Vector3;
 import com.innovalab.shock.vues.GraphsActivity;
 import com.innovalab.shock.vues.jeu.JeuVoitureActivity;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private int i=0;
     private String[] colors = new String[]{"G","B"};
+    private Random rand = new Random();
+
     public static SacDeFrappe sacDeFrappe;
 
     @Override
@@ -38,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         Intent intent;
         ObjetFrappe obj = new ObjetFrappe();
-        obj.ajouterEchantillon(new Vector3(200,0,0));
+        obj.ajouterEchantillon(new Vector3(200+2*(rand.nextInt(10)+1),0,0));
         obj.calculerInfos();
 
         switch(v.getId())

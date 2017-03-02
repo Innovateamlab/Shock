@@ -37,7 +37,6 @@ public class GraphsActivity extends Activity
 
         Intent i = getIntent();
         final ObjetFrappe objetFrappe = (ObjetFrappe)i.getSerializableExtra("FRAPPE");
-        objetFrappe.calculerInfos();
 
         test_graph_force = true;
 
@@ -53,7 +52,6 @@ public class GraphsActivity extends Activity
             XYSeries courbeF3= new SimpleXYSeries(objetFrappe.getTemps(),objetFrappe.getforceFrappeNumC3(), "C3");
             listeCourbeForce.add(courbeF3);
 
-            listeGraph.add(listeCourbeForce);
             listeGraph.add(listeCourbeForce);
         }
 
